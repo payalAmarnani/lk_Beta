@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170531054510) do
+ActiveRecord::Schema.define(version: 20170531072527) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20170531054510) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.string   "category_type"
+    t.boolean  "hidden"
   end
 
   create_table "products", force: :cascade do |t|

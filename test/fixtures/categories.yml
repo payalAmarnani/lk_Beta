@@ -9,3 +9,9 @@ two:
   name: MyString
   description: MyText
   category_type: Tailored Items
+
+three:
+  name: Suits
+  description: MyText
+  category_type: Tailored Items
+  hidden: "true"

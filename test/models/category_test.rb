@@ -18,9 +18,20 @@ class CategoryTest < ActiveSupport::TestCase
 	  assert !cat2.save, "Failed Due to no name"
   end
 
-   test "validate category_type presence" do
- 	 cat=Category.new(name:"Shirts",description: "Testing it out-Desc")
+  test "validate category_type presence" do
+ 	  cat=Category.new(name:"Shirts",description: "Testing it out-Desc")
   	assert !cat.save, "Failed Due to no category_type presence"
   end
+
+  test "hidden scope implementation" do
+    cat=Category.new(name:"Shirts",description: "Testing it out-Desc",category_type:"TailoredItems", hidden:false)
+    cat.save
+    cat2=Category.new(name:"Suits",description:"Testing for name uniqueness", category_type:"TailoredItems", hidden: true)
+    cat2.save
+    test_cat=[]
+    test_cat<<cat
+    assert_equal Category.active,test_cat, "Failed scope impelementation"
+  end
+
 
 end

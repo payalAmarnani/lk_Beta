@@ -10,5 +10,9 @@ class Product < ActiveRecord::Base
 
   scope :active, -> { where(active: true) }
 
-  #TODO Add image save on S3 server
+  #TODO Modify this to required style
+  has_attached_file :product_image, styles: { small: "64x64", med: "100x100", large: "200x200" }
+  validates_attachment :product_image, presence: true,
+  content_type: { content_type: "image/jpeg" },
+  size: { in: 0..100.kilobytes }
 end

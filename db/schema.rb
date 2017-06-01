@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170531072527) do
+ActiveRecord::Schema.define(version: 20170601051238) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -25,8 +25,8 @@ ActiveRecord::Schema.define(version: 20170531072527) do
   create_table "products", force: :cascade do |t|
     t.integer  "category_id"
     t.string   "product_name"
-    t.decimal  "price",             precision: 8,  scale: 2
-    t.decimal  "stock_level",       precision: 16, scale: 2
+    t.decimal  "price",                      precision: 8,  scale: 2
+    t.decimal  "stock_level",                precision: 16, scale: 2
     t.string   "supplier_code"
     t.string   "product_code"
     t.text     "short_description"
@@ -43,8 +43,12 @@ ActiveRecord::Schema.define(version: 20170531072527) do
     t.string   "yarn"
     t.string   "buttons"
     t.string   "lining_fabric"
-    t.datetime "created_at",                                 null: false
-    t.datetime "updated_at",                                 null: false
+    t.datetime "created_at",                                          null: false
+    t.datetime "updated_at",                                          null: false
+    t.string   "product_image_file_name"
+    t.string   "product_image_content_type"
+    t.integer  "product_image_file_size"
+    t.datetime "product_image_updated_at"
   end
 
   add_index "products", ["category_id"], name: "index_products_on_category_id"

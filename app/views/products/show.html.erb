@@ -9,6 +9,7 @@
   <strong>Product name:</strong>
   <%= @product.product_name %>
 </p>
+<%= link_to image_tag(@product.product_image.url(:large)), @product.product_image.url %>
 
 <p>
   <strong>Price:</strong>

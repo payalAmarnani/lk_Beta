@@ -42,6 +42,7 @@ Rails.application.configure do
     # :bucket => 'lk-beta-dev-bucket'
     :s3_credentials => {
       :bucket => 'lk-beta-dev-bucket',
+      :s3_region=> 'ap-southeast-1',
       :s3_credentials => "#{Rails.root}/config/aws.yml",
     }
   }

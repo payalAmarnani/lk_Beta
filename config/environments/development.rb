@@ -36,6 +36,15 @@ Rails.application.configure do
   # Raises helpful error messages.
   config.assets.raise_runtime_errors = true
 
+  config.paperclip_defaults = {
+    :storage => :s3,
+    # :s3_host_name => 'REMOVE_THIS_LINE_IF_UNNECESSARY',
+    # :bucket => 'lk-beta-dev-bucket'
+    :s3_credentials => {
+      :bucket => 'lk-beta-dev-bucket',
+      :s3_credentials => "#{Rails.root}/config/aws.yml",
+    }
+  }
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 end

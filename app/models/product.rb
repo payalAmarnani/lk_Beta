@@ -9,6 +9,6 @@ class Product < ActiveRecord::Base
   validates :category, presence: true
 
   scope :active, -> { where(active: true) }
-
+  
   #TODO Add image save on S3 server
 end

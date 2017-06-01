@@ -2,14 +2,21 @@
 
 <p>
   <strong>Category:</strong>
-  <%= @product.category.name %>
+  <% if !@product.category.nil?%><%= @product.category.name %><% end%>
 </p>
 
 <p>
   <strong>Product name:</strong>
   <%= @product.product_name %>
 </p>
+<p>
+  <strong>Product Image:</strong>
 <%= link_to image_tag(@product.product_image.url(:large)), @product.product_image.url %>
+</p>
+<p>
+  <strong>Fabric Image:</strong>
+<%= link_to image_tag(@product.fabric_image.url(:large)), @product.fabric_image.url %>
+</p>
 
 <p>
   <strong>Price:</strong>

@@ -32,7 +32,9 @@
   <tbody>
     <% @products.each do |product| %>
       <tr>
-        <td><%= product.category %></td>
+        <td><% if !product.category.nil?%>
+<%= product.category.name %><% end%></td>
+        <td><%= image_tag product.product_image.url(:small)%></td>
         <td><%= product.product_name %></td>
         <td><%= product.price %></td>
         <td><%= product.stock_level %></td>

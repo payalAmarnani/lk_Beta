@@ -78,15 +78,15 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   #TODO CHange bucket for production
- config.paperclip_defaults = {
-    :storage => :s3,
-    # :s3_host_name => 'REMOVE_THIS_LINE_IF_UNNECESSARY',
-    # :bucket => 'lk-beta-dev-bucket'
-    :s3_credentials => {
-      :bucket => 'lk-beta-dev-bucket', 
-      :access_key_id => ENV['AWS_ACCESS_KEY'],
-      :s3_region=> ENV['AWS_REGION'],
-      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
-    }
-  }
+ # config.paperclip_defaults = {
+ #    :storage => :s3,
+ #    # :s3_host_name => 'REMOVE_THIS_LINE_IF_UNNECESSARY',
+ #    # :bucket => 'lk-beta-dev-bucket'
+ #    :s3_credentials => {
+ #      :bucket => 'lk-beta-dev-bucket', 
+ #      :access_key_id => ENV['AWS_ACCESS_KEY'],
+ #      :s3_region=> ENV['AWS_REGION'],
+ #      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+ #    }
+ #  }
 end

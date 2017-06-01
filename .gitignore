@@ -16,4 +16,4 @@
 !/log/.keep
 /tmp
 
-aws.yml
+/config/aws.yml

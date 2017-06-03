@@ -14,9 +14,9 @@ class Product < ActiveRecord::Base
   has_attached_file :product_image, styles: { small: "64x64", med: "100x100", large: "200x200" }
   validates_attachment :product_image, presence: true,
   content_type: { content_type: "image/jpeg" },
-  size: { in: 0..100.kilobytes }
+  size: { in: 0..2.megabytes }
 
   has_attached_file :fabric_image, styles: { small: "64x64", med: "100x100", large: "200x200" }
   validates_attachment :fabric_image,content_type: { content_type: "image/jpeg" },
-  size: { in: 0..100.kilobytes }
+  size: { in: 0..2.megabytes}
 end

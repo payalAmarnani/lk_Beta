@@ -9,6 +9,10 @@ class Product < ActiveRecord::Base
   validates :category, presence: true
 
   scope :active, -> { where(active: true) }
+  scope :inactive, -> { where(active: false) }
+  # scope :in_stock,->{where(stock_level:>1.0)}
+
+
 
   #TODO Modify this to required style
   has_attached_file :product_image, styles: { small: "64x64", med: "100x100", large: "200x200" }
@@ -19,4 +23,9 @@ class Product < ActiveRecord::Base
   has_attached_file :fabric_image, styles: { small: "64x64", med: "100x100", large: "200x200" }
   validates_attachment :fabric_image,content_type: { content_type: "image/jpeg" },
   size: { in: 0..2.megabytes}
+
+  def self.in_stock
+    where("stock_level > ?",1.0)
+  end
+
 end

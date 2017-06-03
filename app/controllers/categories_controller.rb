@@ -42,6 +42,12 @@ class CategoriesController < ApplicationController
   def update
     respond_to do |format|
       if @category.update(category_params)
+        # if category is set as hidden, all its products are inactive, if category is set as not hidden, all its products are activated
+        if @category.hidden
+          @category.set_products_inactive(@category)
+        else
+          @category.set_products_active(@category)
+        end
         format.html { redirect_to @category, notice: 'Category was successfully updated.' }
         format.json { render :show, status: :ok, location: @category }
       else

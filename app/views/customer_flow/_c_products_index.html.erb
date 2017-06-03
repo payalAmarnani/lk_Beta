@@ -1,0 +1,38 @@
+<!-- <p id="notice"><%= notice %></p>
+ -->
+<h1>Listing Products</h1>
+
+<table>
+  <thead>
+    <tr>
+    <th> Image </th>
+          <th>Product code</th>
+      <th>Product name</th>
+      <th>Price</th>
+      <th>Short description</th>
+      <th>New?</th>
+      
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= image_tag product.product_image.url(:small)%></td>
+        <td><%= product.product_code %></td>
+        <td><%= product.product_name %></td>
+        <td><%= product.price %></td>
+        <td><%= product.short_description %></td>
+        <td><% if product.new%><%=product.new%><%end%></td>
+        <!--EDit show link-->
+        <td><%= link_to 'Show', customer_flow_product_details_path(:product_id=>product.id) %></td>
+        <td><%= link_to 'Add To Cart'%></td>
+    
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

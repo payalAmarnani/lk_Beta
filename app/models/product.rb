@@ -10,9 +10,21 @@ class Product < ActiveRecord::Base
 
   scope :active, -> { where(active: true) }
   scope :inactive, -> { where(active: false) }
+  # scope :shirts,->{joins(:category).where(category_id: Category.where(name:"Shirts"))}
+  # scope :ties,->{joins(:category).where(category_id: Category.where(name:"Ties"))}
+  # scope :suits,->{joins(:category).where(category_id: Category.where(name:"Suits"))}
+  # scope :cufflinks,->{joins(:category).where(category_id: Category.where(name:"cufflinks"))}
+
   # scope :in_stock,->{where(stock_level:>1.0)}
 
-
+# Filters  (NOT TESTED)
+  #scope :by_country, -> (countries) { where(:country => (countries|| Course.uniq.pluck(:country)) ) }
+  # ||Product.uniq.pluck(:color) fallback method tested
+  scope :color,->(colors) { where(color: colors)}
+  scope :pattern,->(patterns){ where(pattern: patterns)}
+  scope :yarn,->(yarns){where(yarn: yarns)}
+  scope :occasion,->(occasions){where(occasion: occasions)}
+#Filters END
 
   #TODO Modify this to required style
   has_attached_file :product_image, styles: { small: "64x64", med: "100x100", large: "200x200" }

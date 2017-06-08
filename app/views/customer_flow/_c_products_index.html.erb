@@ -2,6 +2,37 @@
  -->
 <h1>Listing Products</h1>
 
+<%= form_tag customer_flow_catalog_path,:method=>"get" do%>
+    <%= hidden_field_tag "category_id", @cat.id%>
+          <% if @cat.id==1%>
+                    <h5> Colors</h5>
+    <% co=Product.uniq.pluck(:color)%>
+    <% co.each do |color| %>
+      <%= check_box_tag 'colors',color%><%= label_tag "#{color}"%>
+      <% end%><br/>
+      <h5> Patterns</h5>
+      <% co=Product.uniq.pluck(:pattern)%>
+    <% co.each do |pattern| %>
+      <%= check_box_tag 'patterns',pattern%><%= label_tag "#{pattern}"%>
+      <% end%><br/>
+      <h5> Occasion</h5>
+      <% co=Product.uniq.pluck(:occasion)%>
+    <% co.each do |occasion| %>
+      <%= check_box_tag 'occasions',occasion%><%= label_tag "#{occasion}"%>
+      <% end%><br/>
+      <h5> Yarn</h5>
+      <% co=Product.uniq.pluck(:yarn)%>
+    <% co.each do |yarn| %>
+      <%= check_box_tag 'yarns',yarn%><%= label_tag "#{yarn}"%>
+      <% end%><br/>
+
+      <%end%>
+      <%= submit_tag "Submit"%>
+<%end%>
+
+<%=link_to "Clear Filters", customer_flow_catalog_path(:category_id => @cat.id)%>
+
+
 <table>
   <thead>
     <tr>

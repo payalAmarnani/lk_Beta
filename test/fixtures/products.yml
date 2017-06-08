@@ -13,7 +13,7 @@ one:
   hidden: false
   new: false
   gst_applicable: false
-  color: MyString
+  color: Red
   pattern: MyString
   season: MyString
   occasion: MyString
@@ -35,7 +35,7 @@ two:
   hidden: false
   new: false
   gst_applicable: false
-  color: MyString
+  color: Red
   pattern: MyString
   season: MyString
   occasion: MyString
@@ -43,3 +43,5 @@ two:
   yarn: MyString
   buttons: MyString
   lining_fabric: MyString
+
+  

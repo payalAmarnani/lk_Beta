@@ -84,6 +84,20 @@ class ProductTest < ActiveSupport::TestCase
     assert (pdt.product_image.size < 2.megabytes)
   end
 
+  test "product color scope" do
+    pdt=Product.new(category:Category.first, product_name:"Blue SHirt", product_code:"LK001", short_description: "Testing it out-Desc",price: 222.23, stock_level:22.3,active: false,color:"RED")
+    pdt.product_image = File.new("test/fixtures/sample_image.jpg")
+    pdt.save
+    pdt1=Product.new(category:Category.first, product_name:"Black SHirt", product_code:"LK002", short_description: "Testing it out-Desc",price: 222.23, stock_level:22.3,active: true,color:"GREEN")
+    pdt1.product_image = File.new("test/fixtures/sample_image.jpg")
+    pdt1.save
+    final_pdt=[]
+    final_pdt<<pdt
+    final_pdt<<pdt1
+    assert_equal Product.color(["RED","GREEN"]),final_pdt
+  end
+
+
 
 
 

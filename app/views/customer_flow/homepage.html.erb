@@ -1,0 +1,6 @@
+<h1>CustomerFlow#homepage</h1>
+<p>Find me in app/views/customer_flow/homepage.html.erb</p>
+
+<% @categories.each do |cat|%>
+	<%=link_to "#{cat.name}", customer_flow_catalog_path(:category_id => cat.id)%>
+<%end%>

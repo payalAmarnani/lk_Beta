@@ -1,0 +1,47 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  category_id: 
+  product_name: MyString
+  price: 9.99
+  stock_level: 9.99
+  supplier_code: MyString
+  product_code: MyString
+  short_description: MyText
+  long_description: MyText
+  active: false
+  hidden: false
+  new: false
+  gst_applicable: false
+  color: Red
+  pattern: MyString
+  season: MyString
+  occasion: MyString
+  fabric: MyString
+  yarn: MyString
+  buttons: MyString
+  lining_fabric: MyString
+
+two:
+  category_id: 
+  product_name: MyString
+  price: 9.99
+  stock_level: 9.99
+  supplier_code: MyString
+  product_code: MyString
+  short_description: MyText
+  long_description: MyText
+  active: false
+  hidden: false
+  new: false
+  gst_applicable: false
+  color: Red
+  pattern: MyString
+  season: MyString
+  occasion: MyString
+  fabric: MyString
+  yarn: MyString
+  buttons: MyString
+  lining_fabric: MyString
+
+  

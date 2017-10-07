@@ -1,9 +1,16 @@
 Rails.application.routes.draw do
+  get 'customer_flow/homepage'
+
+  get 'customer_flow/catalog'
+  get 'customer_flow/product_details'
+
+  resources :products
+  resources :categories
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'customer_flow#homepage'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

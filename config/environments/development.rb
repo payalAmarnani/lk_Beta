@@ -36,6 +36,17 @@ Rails.application.configure do
   # Raises helpful error messages.
   config.assets.raise_runtime_errors = true
 
+  ######TODO UNCOMMENT WHEN PRODUCTION/GIT REPO IS PRIVATE- Create a new key and add to aws.rb & aws.yml#####
+  # config.paperclip_defaults = {
+  #   :storage => :s3,
+  #   :s3_credentials => {
+  #     :bucket => 'lk-beta-dev-bucket',
+  #     :s3_host_name=> "s3-ap-southeast-1.amazonaws.com",
+  #     :s3_region=> 'ap-southeast-1',
+  #     :s3_credentials => "#{Rails.root}/config/aws.yml",
+  #   }
+  # }
+  ##### END#####
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 end

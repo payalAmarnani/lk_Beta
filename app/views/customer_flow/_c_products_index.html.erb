@@ -1,0 +1,69 @@
+<!-- <p id="notice"><%= notice %></p>
+ -->
+<h1>Listing Products</h1>
+
+<%= form_tag customer_flow_catalog_path,:method=>"get" do%>
+    <%= hidden_field_tag "category_id", @cat.id%>
+          <% if @cat.id==1%>
+                    <h5> Colors</h5>
+    <% co=Product.uniq.pluck(:color)%>
+    <% co.each do |color| %>
+      <%= check_box_tag 'colors',color%><%= label_tag "#{color}"%>
+      <% end%><br/>
+      <h5> Patterns</h5>
+      <% co=Product.uniq.pluck(:pattern)%>
+    <% co.each do |pattern| %>
+      <%= check_box_tag 'patterns',pattern%><%= label_tag "#{pattern}"%>
+      <% end%><br/>
+      <h5> Occasion</h5>
+      <% co=Product.uniq.pluck(:occasion)%>
+    <% co.each do |occasion| %>
+      <%= check_box_tag 'occasions',occasion%><%= label_tag "#{occasion}"%>
+      <% end%><br/>
+      <h5> Yarn</h5>
+      <% co=Product.uniq.pluck(:yarn)%>
+    <% co.each do |yarn| %>
+      <%= check_box_tag 'yarns',yarn%><%= label_tag "#{yarn}"%>
+      <% end%><br/>
+
+      <%end%>
+      <%= submit_tag "Submit"%>
+<%end%>
+
+<%=link_to "Clear Filters", customer_flow_catalog_path(:category_id => @cat.id)%>
+
+
+<table>
+  <thead>
+    <tr>
+    <th> Image </th>
+          <th>Product code</th>
+      <th>Product name</th>
+      <th>Price</th>
+      <th>Short description</th>
+      <th>New?</th>
+      
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= image_tag product.product_image.url(:small)%></td>
+        <td><%= product.product_code %></td>
+        <td><%= product.product_name %></td>
+        <td><%= product.price %></td>
+        <td><%= product.short_description %></td>
+        <td><% if product.new%><%=product.new%><%end%></td>
+        <!--EDit show link-->
+        <td><%= link_to 'Show', customer_flow_product_details_path(:product_id=>product.id) %></td>
+        <td><%= link_to 'Add To Cart'%></td>
+    
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

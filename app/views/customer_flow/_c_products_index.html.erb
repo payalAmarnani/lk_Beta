@@ -59,7 +59,9 @@
         <!--EDit show link-->
         <td><%= link_to 'Show', customer_flow_product_details_path(:product_id=>product.id) %></td>
         <td><%= link_to 'Add To Cart'%></td>
-    
+    <!--- New for add to cart-->
+        <%= render "product_row", product: product, order_item: @order_item %>
+<!--end-->
       </tr>
     <% end %>
   </tbody>

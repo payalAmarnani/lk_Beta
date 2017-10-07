@@ -11,6 +11,8 @@ class CustomerFlowController < ApplicationController
     @products = @products.pattern(params[:patterns]) if params[:patterns].present?
     @products = @products.occasion(params[:occasions]) if params[:occasions].present?
     @products = @products.yarn(params[:yarns]) if params[:yarns].present?
+    @order_item = current_order.order_items.new
+
 
     
   end

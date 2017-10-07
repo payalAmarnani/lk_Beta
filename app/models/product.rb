@@ -1,5 +1,9 @@
 class Product < ActiveRecord::Base
   belongs_to :category
+  has_many :order_items
+
+
+
   #TODO Add Validations
   validates :product_name, presence: true
   validates :product_code, presence: true
@@ -8,6 +12,7 @@ class Product < ActiveRecord::Base
   validates :stock_level, presence:true, numericality: true
   validates :category, presence: true
 
+  default_scope { where(active: true) }
   scope :active, -> { where(active: true) }
   scope :inactive, -> { where(active: false) }
   # scope :shirts,->{joins(:category).where(category_id: Category.where(name:"Shirts"))}

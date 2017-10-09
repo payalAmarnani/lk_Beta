@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   resource :cart, only: [:show]
   resources :order_items, only: [:create, :update, :destroy]
+  resources :customer_flow
 
   # You can have the root of your site routed with "root"
   root 'customer_flow#homepage'

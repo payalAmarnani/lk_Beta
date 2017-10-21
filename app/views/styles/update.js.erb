@@ -1,0 +1,5 @@
+<% if @style.errors.any? %>
+alert("not valid.")
+<% else %>
+	  $("#editStyle<%= @style.id%>").modal("hide")
+<% end %>

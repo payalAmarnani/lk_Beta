@@ -3,6 +3,19 @@
   <div class="row">
     <div class="col-xs-8">
       <h4><%= product.product_name %></h4>
+      <h5> <% @style=Style.find_by(:OrderItem_id=>order_item.id)%>
+     <h5>FIT : <%= @style.fit%></h5>
+      <h5>Collar : <%= @style.collar%></h5>
+           <h5>Cuff: <%= @style.cuff%></h5>
+                <h5>Length_type : <%= @style.length_type%></h5>
+                     <h5>Contrast Collar Cuff : <%= @style.contrastCollarCuff%></h5>
+
+<a href="#editStyle<%= @style.id%>" role="button" class="btn" data-toggle="modal" data-target="#editStyle<%= @style.id%>">Edit Styles</a>
+<div id="editStyle<%= @style.id%>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="editStyle" aria-hidden="true">
+          <%=render 'edit_style'%>
+
+</div>
+
     </div>
     <div class="col-xs-4">
 

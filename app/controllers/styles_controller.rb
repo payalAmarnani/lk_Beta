@@ -41,15 +41,17 @@ class StylesController < ApplicationController
   # PATCH/PUT /styles/1
   # PATCH/PUT /styles/1.json
   def update
-    respond_to do |format|
-      if @style.update(style_params)
-        format.html { redirect_to @style, notice: 'Style was successfully updated.' }
-        format.json { render :show, status: :ok, location: @style }
-      else
-        format.html { render :edit }
-        format.json { render json: @style.errors, status: :unprocessable_entity }
-      end
-    end
+    @style.update(style_params)
+    redirect_to cart_path, notice: 'Style was successfully updated.' 
+    # respond_to do |format|
+      # if @style.update(style_params)
+      #   format.html { redirect_to @style, notice: 'Style was successfully updated.' }
+      #   format.json { render :show, status: :ok, location: @style }
+      # else
+      #   format.html { render :edit }
+      #   format.json { render json: @style.errors, status: :unprocessable_entity }
+      # end
+    # end
   end
 
   # DELETE /styles/1

@@ -1,5 +1,6 @@
 <% if @style.errors.any? %>
 alert("not valid.")
 <% else %>
+	  $("#style-modal").modal("hide")
   $(".cart-text").html("<%= escape_javascript(render 'layouts/cart_text') %>")
 <% end %>

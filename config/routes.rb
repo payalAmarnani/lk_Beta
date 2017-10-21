@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :styles
+  
   get 'order_items/create'
 
   get 'order_items/update'

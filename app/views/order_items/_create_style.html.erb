@@ -1,0 +1,28 @@
+<%= form_for @style, remote: true do |f| %>
+      <div class="field">
+    <%= f.hidden_field :OrderItem_id, value:@order_item.id %>
+  </div>
+  <div class="field">
+    <%= f.label :cuff %><br>
+    <%= f.text_field :cuff %>
+  </div>
+  <div class="field">
+    <%= f.label :collar %><br>
+    <%= f.text_field :collar %>
+  </div>
+  <div class="field">
+    <%= f.label :fit %><br>
+    <%= f.text_field :fit %>
+  </div>
+  <div class="field">
+    <%= f.label :length_type %><br>
+    <%= f.text_field :length_type %>
+  </div>
+  <div class="field">
+    <%= f.label :contrastCollarCuff %><br>
+    <%= f.text_field :contrastCollarCuff %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+  <% end %>

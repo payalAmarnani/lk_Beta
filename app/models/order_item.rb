@@ -1,10 +1,13 @@
 class OrderItem < ActiveRecord::Base
   belongs_to :product
   belongs_to :order
+  has_one :style
+    accepts_nested_attributes_for :style
 
   validates :quantity, presence: true, numericality: { only_integer: true, greater_than: 0 }
   validate :product_present
   validate :order_present
+
 
   before_save :finalize
 
@@ -32,6 +35,7 @@ class OrderItem < ActiveRecord::Base
       errors.add(:order, "is not a valid order.")
     end
   end
+  
 
   def finalize
     self[:unit_price] = unit_price

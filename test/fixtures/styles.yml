@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  OrderItem_id: 
+  cuff: MyString
+  collar: MyString
+  fit: MyString
+  length_type: MyString
+  contrastCollarCuff: MyString
+
+two:
+  OrderItem_id: 
+  cuff: MyString
+  collar: MyString
+  fit: MyString
+  length_type: MyString
+  contrastCollarCuff: MyString

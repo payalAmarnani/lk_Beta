@@ -1,0 +1,41 @@
+<%= form_for(@style) do |f| %>
+  <% if @style.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@style.errors.count, "error") %> prohibited this style from being saved:</h2>
+
+      <ul>
+      <% @style.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :OrderItem_id %><br>
+    <%= f.text_field :OrderItem_id %>
+  </div>
+  <div class="field">
+    <%= f.label :cuff %><br>
+    <%= f.text_field :cuff %>
+  </div>
+  <div class="field">
+    <%= f.label :collar %><br>
+    <%= f.text_field :collar %>
+  </div>
+  <div class="field">
+    <%= f.label :fit %><br>
+    <%= f.text_field :fit %>
+  </div>
+  <div class="field">
+    <%= f.label :length_type %><br>
+    <%= f.text_field :length_type %>
+  </div>
+  <div class="field">
+    <%= f.label :contrastCollarCuff %><br>
+    <%= f.text_field :contrastCollarCuff %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

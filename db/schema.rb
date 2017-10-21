@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171007055818) do
+ActiveRecord::Schema.define(version: 20171021045733) do
 
   create_table "ar_internal_metadata", primary_key: "key", force: :cascade do |t|
     t.string   "value"
@@ -95,5 +95,18 @@ ActiveRecord::Schema.define(version: 20171007055818) do
   end
 
   add_index "products", ["category_id"], name: "index_products_on_category_id"
+
+  create_table "styles", force: :cascade do |t|
+    t.integer  "OrderItem_id"
+    t.string   "cuff"
+    t.string   "collar"
+    t.string   "fit"
+    t.string   "length_type"
+    t.string   "contrastCollarCuff"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "styles", ["OrderItem_id"], name: "index_styles_on_OrderItem_id"
 
 end

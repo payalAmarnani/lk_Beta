@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+ 
+
   resources :styles
   
   get 'order_items/create'
@@ -8,6 +10,7 @@ Rails.application.routes.draw do
   get 'order_items/destroy'
 
   get 'carts/show'
+  post 'carts/empty'
 
   get 'customer_flow/homepage'
 
@@ -22,6 +25,13 @@ Rails.application.routes.draw do
   resource :cart, only: [:show]
   resources :order_items, only: [:create, :update, :destroy]
   resources :customer_flow
+
+  resources :payments, only: [:index, :new,:create]
+  #get 'payments/index'
+
+  #get 'payments/new'
+
+  #get 'payments/create'
 
   # You can have the root of your site routed with "root"
   root 'customer_flow#homepage'

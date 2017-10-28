@@ -5,3 +5,9 @@
  <div class="shopping-cart">
   <%= render "shopping_cart" %>
 </div>
+
+<div class="container-row">
+     <%= button_to 'Empty Cart', action:'empty', data: { confirm: 'Are you sure?' } %>
+     <%= button_to 'Checkout', action:'empty' %>
+
+</div>

@@ -30,7 +30,7 @@ gem 'paperclip', '~> 4.2'
 gem 'aws-sdk', '< 2.0'
 # gem 'paperclip', :git=> 'https://github.com/thoughtbot/paperclip', :ref => '523bd46c768226893f23889079a7aa9c73b57d68'
 
-
+gem 'activemerchant'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

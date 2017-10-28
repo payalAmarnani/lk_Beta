@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171021045733) do
+ActiveRecord::Schema.define(version: 20171024123218) do
 
   create_table "ar_internal_metadata", primary_key: "key", force: :cascade do |t|
     t.string   "value"
@@ -49,6 +49,22 @@ ActiveRecord::Schema.define(version: 20171021045733) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "order_transactions", force: :cascade do |t|
+    t.integer  "payment_id"
+    t.string   "action"
+    t.integer  "amount"
+    t.boolean  "success"
+    t.string   "authorization"
+    t.string   "message"
+    t.text     "params"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "order_id"
+  end
+
+  add_index "order_transactions", ["order_id"], name: "index_order_transactions_on_order_id"
+  add_index "order_transactions", ["payment_id"], name: "index_order_transactions_on_payment_id"
+
   create_table "orders", force: :cascade do |t|
     t.decimal  "subtotal",        precision: 12, scale: 3
     t.decimal  "tax",             precision: 12, scale: 3
@@ -60,6 +76,20 @@ ActiveRecord::Schema.define(version: 20171021045733) do
   end
 
   add_index "orders", ["order_status_id"], name: "index_orders_on_order_status_id"
+
+  create_table "payments", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "last4"
+    t.decimal  "amount",             precision: 12, scale: 3
+    t.boolean  "success"
+    t.string   "authorization_code"
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
+    t.integer  "order_id"
+  end
+
+  add_index "payments", ["order_id"], name: "index_payments_on_order_id"
 
   create_table "products", force: :cascade do |t|
     t.integer  "category_id"

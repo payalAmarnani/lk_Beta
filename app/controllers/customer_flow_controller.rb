@@ -1,4 +1,6 @@
 class CustomerFlowController < ApplicationController
+  before_action :authenticate_customer!, except: [:homepage, :catalog,:product_details]
+
   def homepage
   	@categories=Category.active
   end
@@ -16,6 +18,10 @@ class CustomerFlowController < ApplicationController
 
   def product_details
   @product=Product.find(params[:product_id])
+  end
+  
+  def cart_checkout_measurements
+
   end
 
 end

@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  CustomerGroup_id: 
+  first_name: MyString
+  salutation: MyString
+  surname: MyString
+  company_name: MyString
+  position: MyString
+  email_address: MyString
+  username: MyString
+  password: MyString
+  email_signup: false
+  customer_comment: MyText
+  vip: false
+  active: false
+
+two:
+  CustomerGroup_id: 
+  first_name: MyString
+  salutation: MyString
+  surname: MyString
+  company_name: MyString
+  position: MyString
+  email_address: MyString
+  username: MyString
+  password: MyString
+  email_signup: false
+  customer_comment: MyText
+  vip: false
+  active: false

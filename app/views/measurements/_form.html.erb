@@ -1,0 +1,61 @@
+<%= form_for(@measurement) do |f| %>
+  <% if @measurement.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@measurement.errors.count, "error") %> prohibited this measurement from being saved:</h2>
+
+      <ul>
+      <% @measurement.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :Customer_id %><br>
+    <%= f.text_field :Customer_id %>
+  </div>
+  <div class="field">
+    <%= f.label :chest %><br>
+    <%= f.text_field :chest %>
+  </div>
+  <div class="field">
+    <%= f.label :neck %><br>
+    <%= f.text_field :neck %>
+  </div>
+  <div class="field">
+    <%= f.label :waist %><br>
+    <%= f.text_field :waist %>
+  </div>
+  <div class="field">
+    <%= f.label :hip %><br>
+    <%= f.text_field :hip %>
+  </div>
+  <div class="field">
+    <%= f.label :shirt_length %><br>
+    <%= f.text_field :shirt_length %>
+  </div>
+  <div class="field">
+    <%= f.label :sleeve_length %><br>
+    <%= f.text_field :sleeve_length %>
+  </div>
+  <div class="field">
+    <%= f.label :back %><br>
+    <%= f.text_field :back %>
+  </div>
+  <div class="field">
+    <%= f.label :wrist %><br>
+    <%= f.text_field :wrist %>
+  </div>
+  <div class="field">
+    <%= f.label :sleeve_width %><br>
+    <%= f.text_field :sleeve_width %>
+  </div>
+  <div class="field">
+    <%= f.label :shoulder_type %><br>
+    <%= f.text_field :shoulder_type %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

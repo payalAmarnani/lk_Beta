@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Customer Groups</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Group type</th>
+      <th>Hidden</th>
+      <th>Active</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @customer_groups.each do |customer_group| %>
+      <tr>
+        <td><%= customer_group.name %></td>
+        <td><%= customer_group.group_type %></td>
+        <td><%= customer_group.hidden %></td>
+        <td><%= customer_group.active %></td>
+        <td><%= link_to 'Show', customer_group %></td>
+        <td><%= link_to 'Edit', edit_customer_group_path(customer_group) %></td>
+        <td><%= link_to 'Destroy', customer_group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Customer group', new_customer_group_path %>

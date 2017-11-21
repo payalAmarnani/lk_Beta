@@ -44,7 +44,7 @@ Rails.application.configure do
     :signature => "AGjv6SW.mTiKxtkm6L9DcSUCUgePAUDQ3L-kTdszkPG8mRfjaRZDYtSu"
   )
 end
-
+config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   ######TODO UNCOMMENT WHEN PRODUCTION/GIT REPO IS PRIVATE- Create a new key and add to aws.rb & aws.yml#####
   # config.paperclip_defaults = {
   #   :storage => :s3,

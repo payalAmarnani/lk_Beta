@@ -1,7 +1,23 @@
 Rails.application.routes.draw do
  
 
+  
+  devise_for :customers
+#   devise_scope :customers do
+#   get "signup",   :to => "accounts#new"
+#   get "signin",   :to => "devise/sessions#new"
+#   get "signout",  :to => "devise/sessions#destroy"
+#   get "cancel_user_registration", :to => "devise/registrations#cancel"
+#   post "user_registration",       :to => "customers#create"
+#   # get "new_user_registration",    :to => "customers#new"
+#   # get "edit_user_registration",   :to => "customers#edit"
+# end
+  resources :measurements
+  resources :addresses
+  resources :customers
+  resources :customer_groups
   resources :styles
+  devise_for :users
   
   get 'order_items/create'
 
@@ -16,7 +32,8 @@ Rails.application.routes.draw do
 
   get 'customer_flow/catalog'
   get 'customer_flow/product_details'
-
+  get 'customer_flow/cart_checkout_measurements'
+  post 'customer_flow/cart_checkout_measurements'
   resources :products
   resources :categories
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Measurements</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Customer</th>
+      <th>Chest</th>
+      <th>Neck</th>
+      <th>Waist</th>
+      <th>Hip</th>
+      <th>Shirt length</th>
+      <th>Sleeve length</th>
+      <th>Back</th>
+      <th>Wrist</th>
+      <th>Sleeve width</th>
+      <th>Shoulder type</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @measurements.each do |measurement| %>
+      <tr>
+        <td><%= measurement.Customer %></td>
+        <td><%= measurement.chest %></td>
+        <td><%= measurement.neck %></td>
+        <td><%= measurement.waist %></td>
+        <td><%= measurement.hip %></td>
+        <td><%= measurement.shirt_length %></td>
+        <td><%= measurement.sleeve_length %></td>
+        <td><%= measurement.back %></td>
+        <td><%= measurement.wrist %></td>
+        <td><%= measurement.sleeve_width %></td>
+        <td><%= measurement.shoulder_type %></td>
+        <td><%= link_to 'Show', measurement %></td>
+        <td><%= link_to 'Edit', edit_measurement_path(measurement) %></td>
+        <td><%= link_to 'Destroy', measurement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Measurement', new_measurement_path %>

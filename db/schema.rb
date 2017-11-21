@@ -11,7 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171024123218) do
+ActiveRecord::Schema.define(version: 20171118055808) do
+
+  create_table "addresses", force: :cascade do |t|
+    t.integer  "Customer_id"
+    t.text     "address_1"
+    t.text     "street"
+    t.string   "suburb"
+    t.string   "state"
+    t.string   "zipcode"
+    t.string   "country"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "addresses", ["Customer_id"], name: "index_addresses_on_Customer_id"
 
   create_table "ar_internal_metadata", primary_key: "key", force: :cascade do |t|
     t.string   "value"
@@ -29,6 +43,63 @@ ActiveRecord::Schema.define(version: 20171024123218) do
     t.string   "category_type"
     t.boolean  "hidden"
   end
+
+  create_table "customer_groups", force: :cascade do |t|
+    t.string   "name"
+    t.string   "group_type"
+    t.boolean  "hidden"
+    t.boolean  "active"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "customers", force: :cascade do |t|
+    t.integer  "CustomerGroup_id"
+    t.string   "first_name"
+    t.string   "salutation"
+    t.string   "surname"
+    t.string   "company_name"
+    t.string   "position"
+    t.string   "username"
+    t.boolean  "email_signup"
+    t.text     "customer_comment"
+    t.boolean  "vip"
+    t.boolean  "active"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+  end
+
+  add_index "customers", ["CustomerGroup_id"], name: "index_customers_on_CustomerGroup_id"
+  add_index "customers", ["email"], name: "index_customers_on_email", unique: true
+  add_index "customers", ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
+
+  create_table "measurements", force: :cascade do |t|
+    t.integer  "Customer_id"
+    t.decimal  "chest",         precision: 12, scale: 3
+    t.decimal  "neck",          precision: 12, scale: 3
+    t.decimal  "waist",         precision: 12, scale: 3
+    t.decimal  "hip",           precision: 12, scale: 3
+    t.decimal  "shirt_length",  precision: 12, scale: 3
+    t.decimal  "sleeve_length", precision: 12, scale: 3
+    t.decimal  "back",          precision: 12, scale: 3
+    t.decimal  "wrist",         precision: 12, scale: 3
+    t.decimal  "sleeve_width",  precision: 12, scale: 3
+    t.string   "shoulder_type"
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+  end
+
+  add_index "measurements", ["Customer_id"], name: "index_measurements_on_Customer_id"
 
   create_table "order_items", force: :cascade do |t|
     t.integer  "product_id"
@@ -138,5 +209,23 @@ ActiveRecord::Schema.define(version: 20171024123218) do
   end
 
   add_index "styles", ["OrderItem_id"], name: "index_styles_on_OrderItem_id"
+
+  create_table "users", force: :cascade do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end

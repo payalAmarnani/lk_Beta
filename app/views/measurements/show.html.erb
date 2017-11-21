@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Customer:</strong>
+  <%= @measurement.Customer %>
+</p>
+
+<p>
+  <strong>Chest:</strong>
+  <%= @measurement.chest %>
+</p>
+
+<p>
+  <strong>Neck:</strong>
+  <%= @measurement.neck %>
+</p>
+
+<p>
+  <strong>Waist:</strong>
+  <%= @measurement.waist %>
+</p>
+
+<p>
+  <strong>Hip:</strong>
+  <%= @measurement.hip %>
+</p>
+
+<p>
+  <strong>Shirt length:</strong>
+  <%= @measurement.shirt_length %>
+</p>
+
+<p>
+  <strong>Sleeve length:</strong>
+  <%= @measurement.sleeve_length %>
+</p>
+
+<p>
+  <strong>Back:</strong>
+  <%= @measurement.back %>
+</p>
+
+<p>
+  <strong>Wrist:</strong>
+  <%= @measurement.wrist %>
+</p>
+
+<p>
+  <strong>Sleeve width:</strong>
+  <%= @measurement.sleeve_width %>
+</p>
+
+<p>
+  <strong>Shoulder type:</strong>
+  <%= @measurement.shoulder_type %>
+</p>
+
+<%= link_to 'Edit', edit_measurement_path(@measurement) %> |
+<%= link_to 'Back', measurements_path %>

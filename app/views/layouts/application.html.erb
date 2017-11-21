@@ -22,11 +22,22 @@
         <h1><%= link_to "My Store", root_path %></h1>
       </div>
       <div class="col-xs-6 text-right">
-        <h1 class="cart-text"><%= render 'layouts/cart_text' %></h1>
+        <h1 class="cart-text">
+          <% if customer_signed_in? %>
+              <%= link_to current_customer.email, edit_customer_registration_path %>
+             <%= link_to "Logout",destroy_customer_session_path, method: :delete %>|
+          <% else %>
+              <%= link_to "Login",new_customer_session_path %>| 
+              <%= link_to "Sign Up",new_customer_registration_path %>|
+          <% end %>
+
+          <%= render 'layouts/cart_text' %></h1>
+
       </div>
     </div>
     <hr>
-    
+          <% if notice %><div class="alert alert-info"><%= notice %></div><%end%>
+          <% if alert %><div class="alert alert-warning"><%= alert %></div><%end%>
 <%= yield %>
   </div>
 

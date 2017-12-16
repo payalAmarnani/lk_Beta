@@ -21,7 +21,17 @@ class CustomerFlowController < ApplicationController
   end
   
   def cart_checkout_measurements
-
+    @order=current_order
+    @customer=current_customer
+    @order.customer=@customer
+    @order.save
+    if @customer.measurement.nil?
+      @measurement=Measurement.new
+      @measurement.Customer_id=@customer.id
+      @measurement.save
+    else
+    @measurement=@customer.measurement
+     end
   end
 
 end

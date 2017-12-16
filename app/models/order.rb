@@ -3,6 +3,7 @@ class Order < ActiveRecord::Base
   has_many :order_items
   has_many :order_transactions
   has_one :payment
+  belongs_to :customer
   before_create :set_order_status
   before_save :update_subtotal
 

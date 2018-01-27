@@ -1,0 +1,29 @@
+<h1>Edit Addresses </h1>
+
+<%= form_tag :controller=>'customer_flow',:action=>'update_addresses', method: :post do  %>
+     <%= fields_for :billing_address do |ba|  %>              
+       <%= ba.text_field :address1 %>
+        <%= ba.text_field :address2 %>
+        <%= ba.text_field :city %>
+        <%= ba.text_field :state_code %>
+        <%= ba.text_field :postal_code%>
+        <%= ba.text_field :country_code %>
+        <%end%>
+          Use Same Address  : <%= check_box_tag "order[bill_to_shipping_address]"%>
+ <%= tag :input, :type => 'hidden', :name => 'timestamp', :value => @stale_form_check_timestamp%>
+
+
+     <%= fields_for :shipping_address do |sa|  %>              
+        <%= sa.text_field :address1 %>
+        <%= sa.text_field :address2 %>
+        <%= sa.text_field :city %>
+        <%= sa.text_field :state_code%>
+        <%= sa.text_field :postal_code %>
+        <%= sa.text_field :country_code%>
+        <%end%>
+
+    <div class="actions">
+      <%= submit_tag "Next"%>
+    </div>
+<% end %>
+

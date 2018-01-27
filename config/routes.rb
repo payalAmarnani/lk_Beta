@@ -34,6 +34,12 @@ Rails.application.routes.draw do
   get 'customer_flow/product_details'
   get 'customer_flow/cart_checkout_measurements'
   post 'customer_flow/cart_checkout_measurements'
+  get 'customer_flow/cart_checkout_billing_shipping'
+  post 'customer_flow/cart_checkout_billing_shipping'
+  get 'customer_flow/checkout_payment', as: :payment
+  post 'customer_flow/update_addresses'
+  get 'customer_flow/edit_addresses'
+
   resources :products
   resources :categories
   # The priority is based upon order of creation: first created -> highest priority.

@@ -34,6 +34,7 @@ gem 'activemerchant'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
+gem 'redirect_on_back'
 # Use Unicorn as the app server
 # gem 'unicorn'
 

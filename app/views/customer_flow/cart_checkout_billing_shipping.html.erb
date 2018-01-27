@@ -1,0 +1,52 @@
+
+<!--<1%= javascript_include_tag "billing_shipping" %>=-->
+
+
+<h1>Billing & Shipping Address </h1>
+<% if !@customer_addresses.nil? %>
+<div id="shipping_addresses">
+<!-- <!%=form_tag customer_flow_cart_checkout_billing_shipping_path, :remote=>'true' do%>-->
+<table>
+  <thead>
+    <tr>
+      <th>Address 1</th>
+      <th>Address 2</th>
+      <th>City</th>
+      <th>State Code</th>
+      <th>Postal Code</th>
+      <th>Country Code </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @customer_addresses.each do |address| %>
+      <tr>
+        <td><%= address.address1 %></td>
+        <td><%= address.address2 %></td>
+        <td><%= address.city %></td>
+        <td><%= address.state_code %></td>
+        <td><%= address.postal_code %></td>
+        <td><%= address.country_code %></td>
+        <td><%=link_to "Select",customer_flow_cart_checkout_billing_shipping_path, :remote=>'true',:id=>address.id,:method=>'Post'%></td>
+<!--         <td><1%=submit_tag "Select",:class=>'select_address'%></td>
+ -->        
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%end%>
+
+<div>
+
+
+<%= render 'billing_shipping_form' %>
+
+
+
+
+
+

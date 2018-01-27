@@ -11,21 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171216045949) do
+ActiveRecord::Schema.define(version: 20180127044950) do
 
   create_table "addresses", force: :cascade do |t|
-    t.integer  "Customer_id"
-    t.text     "address_1"
-    t.text     "street"
-    t.string   "suburb"
-    t.string   "state"
-    t.string   "zipcode"
-    t.string   "country"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string   "addressable_type"
+    t.integer  "addressable_id"
+    t.string   "category",         limit: 64
+    t.string   "full_name"
+    t.string   "address1"
+    t.string   "address2"
+    t.string   "city"
+    t.string   "state_code"
+    t.string   "country_code"
+    t.string   "postal_code"
+    t.datetime "updated_at"
+    t.datetime "created_at"
+    t.string   "address_type"
+    t.boolean  "primary_address"
+    t.integer  "customer_id"
   end
 
-  add_index "addresses", ["Customer_id"], name: "index_addresses_on_Customer_id"
+  add_index "addresses", ["addressable_id"], name: "index_addresses_on_addressable_id"
+  add_index "addresses", ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id"
+  add_index "addresses", ["customer_id"], name: "index_addresses_on_customer_id"
 
   create_table "ar_internal_metadata", primary_key: "key", force: :cascade do |t|
     t.string   "value"
@@ -137,14 +145,16 @@ ActiveRecord::Schema.define(version: 20171216045949) do
   add_index "order_transactions", ["payment_id"], name: "index_order_transactions_on_payment_id"
 
   create_table "orders", force: :cascade do |t|
-    t.decimal  "subtotal",        precision: 12, scale: 3
-    t.decimal  "tax",             precision: 12, scale: 3
-    t.decimal  "shipping",        precision: 12, scale: 3
-    t.decimal  "total",           precision: 12, scale: 3
+    t.decimal  "subtotal",            precision: 12, scale: 3
+    t.decimal  "tax",                 precision: 12, scale: 3
+    t.decimal  "shipping",            precision: 12, scale: 3
+    t.decimal  "total",               precision: 12, scale: 3
     t.integer  "order_status_id"
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
     t.integer  "customer_id"
+    t.integer  "billing_address_id"
+    t.integer  "shipping_address_id"
   end
 
   add_index "orders", ["customer_id"], name: "index_orders_on_customer_id"

@@ -2,7 +2,7 @@ class OrderTransaction < ActiveRecord::Base
   belongs_to :payment
   belongs_to :order
 
-  before_save check_sucess
+  before_save check_success
 
 	serialize :params
   

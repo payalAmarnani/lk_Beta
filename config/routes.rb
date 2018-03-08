@@ -37,8 +37,13 @@ Rails.application.routes.draw do
   get 'customer_flow/cart_checkout_billing_shipping'
   post 'customer_flow/cart_checkout_billing_shipping'
   get 'customer_flow/checkout_payment', as: :payment
+  post 'customer_flow/checkout_payment', as: :PostPayment
+
   post 'customer_flow/update_addresses'
   get 'customer_flow/edit_addresses'
+  get 'customer_flow/confirm_order'
+  get 'customer_flow/order_summary'
+
 
   resources :products
   resources :categories

@@ -1,12 +1,11 @@
 
 <!--<1%= javascript_include_tag "billing_shipping" %>=-->
 
-
 <h1>Billing & Shipping Address </h1>
-<% if !@customer_addresses.nil? %>
+<% if !@customer_addresses.nil?%>
 <div id="shipping_addresses">
 <!-- <!%=form_tag customer_flow_cart_checkout_billing_shipping_path, :remote=>'true' do%>-->
-<table>
+<table class="table table-condensed">
   <thead>
     <tr>
       <th>Address 1</th>
@@ -27,7 +26,7 @@
         <td><%= address.state_code %></td>
         <td><%= address.postal_code %></td>
         <td><%= address.country_code %></td>
-        <td><%=link_to "Select",customer_flow_cart_checkout_billing_shipping_path, :remote=>'true',:id=>address.id,:method=>'Post'%></td>
+        <td><%=button_to "Select", {:remote=>'true',:shipping_id=>address.id,:method=>'Post'}, {id: 'select_shipping_address'}%></td>
 <!--         <td><1%=submit_tag "Select",:class=>'select_address'%></td>
  -->        
 
@@ -41,6 +40,78 @@
 <%end%>
 
 <div>
+
+      <% if !params[:shipping_id].nil? || !params[:billing_id].nil?%>
+
+          <div id="display_shipping_address" style="display: block;">
+          <h4> Selected Shipping Address</h4>
+          <%=@order.shipping_address.address1%>
+          <%=@order.shipping_address.address2%>
+          <%=@order.shipping_address.city%>
+          <%=@order.shipping_address.state_code%>
+          <%=@order.shipping_address.postal_code%>
+          <%=@order.shipping_address.country_code%>
+          </div>
+
+      <% end %>
+
+
+
+
+<% if !params[:shipping_id].nil? || !params[:billing_id].nil? %>
+<% if !@customer_addresses.nil? %>
+<div id="billing_addresses">
+<!-- <!%=form_tag customer_flow_cart_checkout_billing_shipping_path, :remote=>'true' do%>-->
+<table class="table table-condensed">
+  <thead>
+    <tr>
+      <th>Address 1</th>
+      <th>Address 2</th>
+      <th>City</th>
+      <th>State Code</th>
+      <th>Postal Code</th>
+      <th>Country Code </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @customer_addresses.each do |address| %>
+      <tr>
+        <td><%= address.address1 %></td>
+        <td><%= address.address2 %></td>
+        <td><%= address.city %></td>
+        <td><%= address.state_code %></td>
+        <td><%= address.postal_code %></td>
+        <td><%= address.country_code %></td>
+        <td><%=button_to "Select", {:remote=>'true',:billing_id=>address.id,:method=>'Post'}, {class: 'select_address'}%></td>
+<!--         <td><1%=submit_tag "Select",:class=>'select_address'%></td>
+ -->        
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%end%>
+
+<%end%>
+
+
+      <% if !params[:billing_id].nil? %>
+
+          <div id="display_billing_address" style="display: block;">
+          <h4> Selected Billing Address</h4>
+          <%=@order.shipping_address.address1%>
+          <%=@order.shipping_address.address2%>
+          <%=@order.shipping_address.city%>
+          <%=@order.shipping_address.state_code%>
+          <%=@order.shipping_address.postal_code%>
+          <%=@order.shipping_address.country_code%>
+          </div>
+
+      <% end %>
 
 
 <%= render 'billing_shipping_form' %>

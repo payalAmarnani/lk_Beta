@@ -1,4 +1,6 @@
 
+<% if !@order.shipping_address_id.nil? && !@order.billing_address_id.nil?%>
+
 <%= form_tag :controller=>'customer_flow',:action=>'update_addresses', method: :post do  %>
       
 
@@ -32,6 +34,10 @@
     </div>
 <% end %>
 
+<% end %>
+
+
+
 <script type="text/javascript">
   var checkbox = document.getElementById('order_bill_to_shipping_address');
   var details_div = document.getElementById('billing_address');
@@ -42,7 +48,6 @@
        details_div.style['display'] = 'block';
      }
   };
+    </script>
 
 
-  
-</script>

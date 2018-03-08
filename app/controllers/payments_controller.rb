@@ -12,10 +12,11 @@ class PaymentsController < ApplicationController
   	#@payment = Payment.new(payment_params)
   	if @payment.save
       if @payment.process
-        redirect_to payments_path, notice: "The user has been successfully charged." and return
+
+        redirect_to customer_flow_order_summary, notice: "The user has been successfully charged." and return
       end
     end
-    render 'new'
+    redirect_to payment_path, notice: "Payment Failed"   #  render 'new'
   end
 
   private

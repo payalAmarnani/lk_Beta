@@ -39,20 +39,39 @@ class CustomerFlowController < ApplicationController
    @customer_addresses=@customer.addresses
    @order=current_order
    respond_to do |format|
-      if !params[:shipping_id].nil?
-        @order.shipping_address_id=params[:shipping_id].to_i
-        @order.save
-        format.html {}
-        format.js 
+      if !params[:shipping_id].nil? || !params[:billing_id].nil?
+        if !params[:shipping_id].nil?
+            @order.shipping_address_id=params[:shipping_id].to_i
+            @order.save
+            format.html {}
+            format.js 
+        else
+           @order.billing_address_id=params[:billing_id].to_i
+            @order.save
+            format.html {}
+            format.js
+        end
+
       else
         format.html {}
       end
+
     end
 
   end
+  
+  def confirm_order
+    @order=current_order
+    @order_items=@order.order_items
+    @shipping_address=@order.shipping_address
+    @billing_address=@order.billing_address
+  end
 
   def checkout_payment
-   
+  @order=current_order
+
+   @payment=Payment.new
+   @payment.order_id=@order.id
 
 
     # @order=current_order
@@ -78,7 +97,7 @@ class CustomerFlowController < ApplicationController
 
       end
     redirect_on_back_to customer_flow_edit_addresses_path
-     redirect_to payment_path
+     redirect_to customer_flow_confirm_order_path
   end
 
   def edit_addresses
